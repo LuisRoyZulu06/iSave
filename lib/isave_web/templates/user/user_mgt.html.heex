@@ -1,0 +1,80 @@
+<main id="js-page-content" role="main" class="page-content">
+  <div class="row">
+      <div class="col-md-1"></div>
+
+      <div class="col-md-10">
+              <!-- Flash -->
+              <div class="row">
+                  <div class="col-md-12 col-lg-offset-2">
+                      <div class="form-group">
+                          <%= if get_flash(@conn, :info) do %>
+                              <div class="alert alert-success alert-styled-left">
+                              <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                              <%= get_flash(@conn, :info) %>
+                              </div>
+                          <% end %>
+                          <%= if get_flash(@conn, :error) do %>
+                              <div class="alert alert-danger alert-styled-left">
+                              <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                              Opps! <%= get_flash(@conn, :error) %>
+                              </div>
+                          <% end %>
+                      </div>
+                  </div>
+              </div>
+
+              <ol class="breadcrumb page-breadcrumb">
+                  <li class="breadcrumb-item">
+                    iSave
+                  </li>
+
+                  <li class="position-absolute pos-top pos-right d-none d-sm-block">
+                    <span class="js-get-date"></span>
+                  </li>
+              </ol>
+
+              <div class="subheader">
+                  <span class="subheader-title">
+                      User Management
+                  </span>
+                  <div class="subheader-block">
+                      <button type="button" class="btn btn-sm btn-dark btn-pills waves-effect waves-themed" data-toggle="modal" data-target="#create-new-user">
+                        Create new user
+                      </button>
+                      <%= render "create_nw_user.html", assigns %>
+                  </div>
+              </div>
+
+
+              <div id="panel-6" class="panel">
+                  <div class="panel-container show">
+                      <div class="panel-content">
+                          <ul class="nav nav-tabs nav-tabs-clean" role="tablist">
+                              <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab-active-user" role="tab">Active users</a></li>
+                              <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-blckd-user" role="tab">Blocked users</a></li>
+                              <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-dd-user" role="tab">Deleted users</a></li>
+                          </ul>
+                          <div class="tab-content p-3">
+                              <!-- Active user -->
+                              <div class="tab-pane fade show active" id="tab-active-user" role="tabpanel">
+                                <%= render "active_users.html", assigns %>
+                              </div>
+
+                              <!-- Blocked user -->
+                              <div class="tab-pane fade" id="tab-blckd-user" role="tabpanel">
+                                <%= render "blocked_users.html", assigns %>
+                              </div>
+
+                              <!-- Deleted user -->
+                              <div class="tab-pane fade" id="tab-dd-user" role="tabpanel">
+                                <%= render "deleted_users.html", assigns %>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+      </div>
+
+      <div class="col-md-1"></div>
+  </div>
+</main>

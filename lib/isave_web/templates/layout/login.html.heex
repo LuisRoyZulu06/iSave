@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta name="description" content="Page Titile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+
+    <title>Login | iSave</title>
+
+    <!-- Call App Mode on ios devices -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- Remove Tap Highlight on Windows Phone IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- base css -->
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/vendors.bundle.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/app.bundle.css")}/>
+  </head>
+
+  <body class="mod-bg-1 ">
+    <div class="page-wrapper">
+      <div class="page-inner">
+        <%= @inner_content %>
+      </div>
+    </div>
+
+    <!-- Base JS -->
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/app.bundle.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/vendors.bundle.js")}></script>
+  </body>
+</html>

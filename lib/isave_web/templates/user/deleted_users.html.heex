@@ -1,0 +1,25 @@
+<table id="bsc_dt" class="table table-bordered table-hover table-striped w-100">
+    <thead class="p-3 bg-fusion-100 rounded overflow-hidden position-relative text-white mb-g">
+        <tr>
+            <th>Username</th>
+            <th>User Role</th>
+            <th>Phone Number</th>
+            <th>status</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+
+    <tbody>
+      <%= for deleted_users <- @deleted_users do%>
+        <%= if deleted_users.user_status == "DELETED" do%>
+          <tr>
+              <td><%= deleted_users.username%></td>
+              <td><%= deleted_users.user_role%></td>
+              <td><%= deleted_users.phone_no%></td>
+              <td><%= deleted_users.user_status%></td>
+              <td>View Details</td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+</table>

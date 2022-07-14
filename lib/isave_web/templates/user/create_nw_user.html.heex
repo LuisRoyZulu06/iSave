@@ -1,0 +1,132 @@
+<!-- Modal center -->
+<style>
+  .reqrd-field{
+    color: rgb(255,0,0);
+    font-weight: bold;
+  }
+</style>
+
+<div class="modal fade" id="create-new-user" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Create new user.
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                      Close window<i class="fal fa-times"></i>
+                    </span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+              <form class="form-horizontal" action={Routes.user_path(@conn, :create_user)} method="POST">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label class="form-label required">First Name</label>
+                              <sup class="reqrd-field">*</sup>
+                              <div class="input-group">
+                                  <input type="text" name="first_name" class="form-control form-control-md" placeholder="First Name" required>
+                                  <input type="hidden" id="csrf" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()}>
+                                  <input type="hidden" name="auto_pwd" value="Y">
+                                  <input type="hidden" name="user_status" value="ACTIVE">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="form-label required">Username</label>
+                              <sup class="reqrd-field">*</sup>
+                              <div class="input-group">
+                                  <input type="text" name="username" placeholder="Username" class="form-control form-control-md" required>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="form-label required">Email</label>
+                              <div class="input-group">
+                                  <input type="email" name="email" placeholder="Email Address" class="form-control form-control-md">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="form-label required">NRC Number</label>
+                              <sup class="reqrd-field">*</sup>
+                              <div class="input-group">
+                                  <input type="text" name="nrc_no" placeholder="NRC Number" class="form-control form-control-md" required>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label class="form-label required">Last Name</label>
+                              <sup class="reqrd-field">*</sup>
+                              <div class="input-group">
+                                  <input type="text" name="last_name" class="form-control form-control-md" placeholder="Last Name" required>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                                <label class="form-label" style="font-weight: bold;">Choose a role</label>
+                                <div class="input-group">
+                                    <select id="usr-rol-slct" class="custom-select form-control" name="user_role" required="required">
+                                        <option value selected disabled>Select role</option>
+                                        <option value="BACKOFFICE">Backoffice</option>
+                                        <option value="CLIENT">Client</option>
+                                    </select>
+                                </div>
+
+                                <span class="help-block" style="display: none;">
+                                    Selected user type is <input type="text" name="user_type" id="user_type">
+                                </span>
+                            </div>
+
+                          <div class="form-group">
+                              <label class="form-label required">Phone Number</label>
+                              <sup class="reqrd-field">*</sup>
+                              <div class="input-group">
+                                  <input type="number" name="phone_no" placeholder="Phone Number" class="form-control form-control-md" required>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="form-label required">Residential Address</label>
+                              <sup class="reqrd-field">*</sup>
+                              <div class="input-group">
+                                  <input type="text" name="residential_address" placeholder="Residentila Address" class="form-control form-control-md" required>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-sm btn-danger waves-effect waves-themed" data-dismiss="modal">
+                        Cancel
+                      </button>
+
+                      <button type="submit" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color:#174A69; color: #fff; font-weight: bold;">
+                        Add User
+                      </button>
+                  </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+  document.getElementById('usr-rol-slct').addEventListener('change', function() {
+    // console.log('You selected: ', this.value);
+    if(this.value == "BACKOFFICE") {
+      $('#user_type').val("1");
+    }
+    else if(this.value == "CLIENT"){
+      $('#user_type').val("2");
+    }
+    else{
+      $('#user_type').val("3");
+    }
+  });
+</script>

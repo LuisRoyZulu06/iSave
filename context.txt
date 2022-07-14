@@ -1,0 +1,7 @@
+============== USER MODULE =================
+mix phx.gen.context Accounts UserAccounts tbl_users first_name last_name email password user_type user_role user_status auto_pwd
+mix phx.gen.context Logs UserLogs tbl_user_logs activity user_id
+mix phx.gen.context Notifications Email tbl_email subject sender_email sender_name mail_body recipient_email status attempts
+
+============== LOGS MODULE =================
+mix phx.gen.context Notifications Email tbl_email_logs subject sender_email sender_name mail_body recipient_email status attempts
